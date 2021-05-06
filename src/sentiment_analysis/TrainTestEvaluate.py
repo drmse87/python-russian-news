@@ -9,7 +9,7 @@ SUPPORT_VECTOR_MACHINES = 'svm'
 
 # Read arguments.
 if len(sys.argv) != 4:
-    raise ValueError("Invalid number of arguments (training_data test_data algorithm).")
+    raise ValueError('Invalid number of arguments (training_data test_data algorithm).')
 training_data = sys.argv[1]
 test_data = sys.argv[2]
 algorithm = sys.argv[3]

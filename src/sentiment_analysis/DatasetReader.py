@@ -6,7 +6,7 @@ class DatasetReader:
     NEUTRAL_CLASS_LABEL = 3
     DOCUMENT_CLASS_INDEX = 0
     DOCUMENT_CONTENT_INDEX = 1
-    BASE_PATH = "../../datasets"
+    DATASETS_PATH = '../../datasets'
 
     def get_all_docs_with_labels_and_filenames_in_directory(self, dataset_path, dataset_include_neutral_class):
         pos_labels_and_filenames = [
@@ -50,17 +50,24 @@ class DatasetReader:
             return document_content.read()
 
     def get_dataset_path(self, dataset_name, dataset_type):
-        dataset_path = f'{DatasetReader.BASE_PATH}/{dataset_name}'
+        dataset_path = f'{DatasetReader.DATASETS_PATH}/{dataset_name}'
 
         if dataset_name == 'imdb':
-            # Check if IMDB dataset exists (or at least test and train dirs) in directory.
-            if not os.path.isdir(f'{DatasetReader.BASE_PATH}/{dataset_name}/test') or not os.path.isdir(f'{DatasetReader.BASE_PATH}/{dataset_name}/train'):
-                raise FileNotFoundError("IMDB dataset is missing.")
+            # Check if IMDB dataset (or at least test and train dirs) exists in directory.
+            if not os.path.isdir(f'{DatasetReader.DATASETS_PATH}/{dataset_name}/test') or \
+                not os.path.isdir(f'{DatasetReader.DATASETS_PATH}/{dataset_name}/train'):
+                raise FileNotFoundError('IMDB dataset is missing.')
 
             if dataset_type == 'train':
-                dataset_path = f'{DatasetReader.BASE_PATH}/{dataset_name}/train'
+                dataset_path = f'{DatasetReader.DATASETS_PATH}/{dataset_name}/train'
             elif dataset_type == 'test':
-                dataset_path = f'{DatasetReader.BASE_PATH}/{dataset_name}/test'
+                dataset_path = f'{DatasetReader.DATASETS_PATH}/{dataset_name}/test'
+        else:
+            # Check if dataset (or at least pos, neg, neutral dirs) exists in directory.
+            if not os.path.isdir(f'{DatasetReader.DATASETS_PATH}/{dataset_name}/pos') or \
+                not os.path.isdir(f'{DatasetReader.DATASETS_PATH}/{dataset_name}/neg') or \
+                    not os.path.isdir(f'{DatasetReader.DATASETS_PATH}/{dataset_name}/neutral'):
+                raise FileNotFoundError(f'Dataset {dataset_name} is missing.')
 
         return dataset_path
 
@@ -78,5 +85,5 @@ class DatasetReader:
 
             print(f'\r Reading {dataset_name} dataset ({dataset_type}) files {(documentNumber / len(all_documents_class_labels_and_filenames)) * 100:.2f}%...', end='')
 
-        print("")
+        print('')
         return documents
