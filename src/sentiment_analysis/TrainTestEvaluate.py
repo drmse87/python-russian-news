@@ -28,11 +28,11 @@ else:
     raise ValueError('Invalid algorithm.')    
 clf.fit(X, y)
 
-# Predict.
+# Test.
 test_data = train_test_dataset_parser.get_test_data()
 y_true = train_test_dataset_parser.get_true_labels()
 y_pred = clf.predict(test_data)
 
-# Evaluate/score.
+# Evaluate.
 target_names = train_test_dataset_parser.get_target_names()
 print(classification_report(y_true, y_pred, target_names=target_names, digits=4))

@@ -29,7 +29,7 @@ class TrainTestDatasetParser:
             self.test_set = Dataset('russian_news', 'test', True)
             self.target_names = TrainTestDatasetParser.TARGET_NAMES_THREE_CLASSES
         else:
-            raise ValueError("Invalid dataset combination.")
+            raise ValueError('Invalid dataset combination.')
 
         # Pass training set name to tokenizer, to add dataset specific stop words.
         self.tfidf_vectorizer = TfidfVectorizer(tokenizer=Lemmatizer(training_set))
