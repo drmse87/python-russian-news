@@ -1,0 +1,17 @@
+Spotify officially launches its Apple Watch app
+
+Following reports of its testing, Spotify today has launched its long-awaited Apple Watch app. The app allows users to control the playback of Spotify’s streaming service from their Watch’s screen, as well as connect to devices like their computer, Wi-Fi speaker and more through Spotify Connect, toggle on Shuffle, access music playlists and other recently played items, favorite tracks with a heart, and more.
+
+The news was announced today on Spotify’s blog, where it details the app’s features, which also include the ability to play podcasts, in addition to music.
+
+“We know the importance of having music on the go, which is why we’re excited to bring a new Spotify app to our highly mobile users on Apple Watch,” the company said. “With this new app, users can enjoy an improved experience with better control and the ability to seamlessly connect to your speakers or devices.”
+
+The App Store’s release notes indicate this is a “first version” of the Watch app, which hints more changes will come.
+
+Spotify confirms that’s the case, noting that a future release will include support for listening to music and podcasts while offline, too.
+
+Beyond just playing or stopping the play of music or podcasts, the new app also lets you do things like skip tracks or rewind a podcast by 15 seconds to catch something you missed — all right from your Apple Watch face.
+
+Though the app is officially live, Spotify says the new experience will be rolling out to Apple Watch users over the coming week. In other words, you may find that you can’t immediately add the Watch app as of today, but you should be able to soon.
+
+To access the app, you’ll need the latest version of Spotify (v.8.4.79) from the App Store.

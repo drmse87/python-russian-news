@@ -1,0 +1,7 @@
+Intel's 5G modem will land in the second half of 2019
+
+We're on the cusp of the 5G revolution, as big players like Qualcomm and Huawei would like us to believe. Not to be left out in the cold, Intel has sped up the timeline for the release of its 5G modem, which it calls the XMM 8160. According to the company, partners can expect to get their hands on the 8160 in the second half of next year.
+
+Intel claims that the multi-mode XMM 8160 will support up to 6Gbps — including millimeter wave (mmWave) and FDD/TDD bands that span from 600Mhz to 6Ghz. That 6Gbps number puts the 8160 at "three to six times faster than the latest LTE modems available today." And being multi-mode, it will support both standalone and non-standalone 5G, 4G, 3G, and even legacy 2G.
+
+Consumers won't see devices with the XMM 8160 until 2020 at the earliest, since it launches to partners in H2 2019. If you're interested in some further reading, you can check out the source link below.

@@ -1,0 +1,21 @@
+Researchers discover surface of 'ultra-smooth' nanomaterial steeper than Austrian Alps
+by Paul Kovach, University of Pittsburgh
+
+The surface of the nanodiamond material (left) was measured at the atomic-scale using a transmission electron microscope. The local slope was found to be steeper than that of the Austrian Alps (right) measured at the scale of a human. Credit: Tevis Jacobs
+People can usually tell if something is rough or smooth by running their fingers along its surface. But what about things that are too small or too big to run a finger over? The earth looks smooth from space, but someone standing at the foot of the Himalayas would disagree. Scientists measure surfaces at different scales to account for different sizes, but these scales don't always agree.
+
+New research from the University of Pittsburgh's Swanson School of Engineering measured an ultrananocrystalline diamond coating, prized for its hard yet smooth properties, and showed that it is far rougher than previously believed. Their findings could help researchers better predict how surface topography affects surface properties for materials used in diverse environments from microsurgery and engines to satellite housings or spacecraft.
+
+"One important measure of the 'roughness' of a surface is its average slope, that is, how steep it is," says Tevis Jacobs, assistant professor of mechanical engineering and materials science at Pitt. "We found that the surface of this nano-diamond film looks wildly different depending on the scale you're using." 
+
+Dr. Jacobs and his team's research appeared in the American Chemical Society (ACS) journal ACS Applied Materials and Interfaces. They took more than 100 measurements of the diamond film, combining conventional techniques with a novel approach based on transmission electron microscopy. The results spanned size scales from one centimeter down to the atomic scale. 
+
+Dr. Jacobs explains, "The nanodiamond surface is smooth enough that you can see your reflection in it. Yet by combining all our measurements, including down to the smallest scales, we showed that this "smooth" material has an average slope of 50 degrees. This is steeper than the Austrian Alps when measured on the scale of a human footstep (39 degrees)."
+
+"By using electron microscopy, we were able to get the smallest end of the measurement range; we can't even define topography below the atomic scale," says Dr. Jacobs. "Then, by combining all the scales together, we were able to get rid of the problem of having roughness deviate between scales. We can calculate 'true' scale-invariant roughness parameters."
+
+"We've known for one hundred years that surface roughness controls surface properties. The missing link is that we haven't been able to quantify its effect. For example, in biomedical applications, different investigations have arrived at opposite conclusions about whether roughness promotes or degrades cell adhesion. We believe this new understanding of roughness across scales will open the door to finally solving this age-old puzzle in surface analysis."
+
+The ultimate goal is to have predictive models of how roughness determines surface attributes such as adhesion, friction or the conduction of heat or electricity. Dr. Jacobs' breakthrough is the first step in an uphill, and very steep, battle to create and validate these models.
+
+"We are currently making properties measurements of this nanodiamond material and many other surfaces to apply mechanics models to link topography and properties," he says. "By finding the scales or the combination of scales that matter most for a given application, we can establish which surface finishing techniques will achieve the best results, reducing the need for a costly and time-consuming trial-and-error approach."

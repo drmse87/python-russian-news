@@ -49,5 +49,24 @@ def do_scraping(articles):
 
         write_to_txt_file(output_filename, output_content)
 
-articles = read_csv_file()
-do_scraping(articles)
+def check_scraped_files():
+    all_files = os.listdir(DIR_NAME)
+    bad_files = []
+
+    for file_name in all_files:
+        with open(f'{DIR_NAME}/{file_name}', 'r', encoding='utf-8') as file_content:
+            file_content_string = file_content.read()
+
+            if len(file_content_string) < 300 or \
+                'cookie' in file_content_string.lower() or \
+                    'gdpr' in file_content_string.lower():
+                bad_files.append(file_name)
+
+    number_of_bad_files = len(bad_files)
+    if number_of_bad_files > 0:
+        print(f'{number_of_bad_files} files may be bad (length < 300 chars) and may need to be copied manually: ', end='')
+        print(*bad_files, sep=', ')
+
+# articles = read_csv_file()
+# do_scraping(articles)
+check_scraped_files()

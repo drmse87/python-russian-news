@@ -1,0 +1,22 @@
+Google extends telecom service Fi to iPhones
+Google said Wednesday it was expanding its "virtual" telecommunication service that was limited to select Android-powered smartphones to a wider range of devices, including iPhones. PHOTO: AFP
+[SAN FRANCISCO] Google said Wednesday it was expanding its "virtual" telecommunication service that was limited to select Android-powered smartphones to a wider range of devices, including iPhones.
+
+Freshly renamed "Google Fi" service aims to take on traditional carriers by letting people pay based on how much data they use and roam internationally.
+
+Fi was limited to newer Pixel handsets made by Google and a few Android-powered smartphones made by other companies because devices need to be able to hop between carriers whose infrastructures are used to provide service on the "virtual" network.
+
+Fi "intelligently" shifts smartphone service between Sprint, T-Mobile, US Cellular, and Wi-Fi hotspots to provide optimal signals, according to Google.
+
+"Our plan now works with the majority of Android devices and iPhones," Fi director Simon Arscott said in a blog post.
+Fi plans in the US offer unlimited domestic call and texts, plus texting internationally, for US$20 monthly. Data costs US$10 per gigabyte with a maximum data charge of US$60 for an individual user, according to the Fi website.
+
+"When we launched Project Fi in 2015, we set out to make your wireless experience fast, easy and fair," Arscott said.
+
+"We're proud that we've achieved a customer satisfaction score of over 90 per cent."
+
+Since smartphones need the proper hardware and software to jump between networks and wi-fi for the "full Google Fi experience," some features may be lacking for iPhones and other handsets that can now access the service but were not designed for it.
+
+Google said the service allows people to use their devices for data in 170 countries and territories under agreements with carriers in those locations.
+
+AFP

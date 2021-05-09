@@ -1,0 +1,19 @@
+Brilliant iron molecule could provide cheaper solar energy
+The new iron molecule. Credit: Nils Rosemann
+For the first time, researchers have succeeded in creating an iron molecule that can function both as a photocatalyst to produce fuel and in solar cells to produce electricity. The results indicate that the iron molecule could replace the more expensive and rarer metals used today.
+
+Some photocatalysts and solar cells are based on a technology that involves molecules containing metals, known as metal complexes. The task of the metal complexes in this context is to absorb solar rays and utilise their energy. The metals in these molecules pose a major problem, however, as they are rare and expensive metals, such as the noble metals ruthenium, osmium and iridium.
+
+"Our results now show that by using advanced molecule design, it is possible to replace the rare metals with iron, which is common in the Earth's crust and therefore cheap," says Chemistry Professor Kenneth Wärnmark of Lund University in Sweden.
+
+Together with colleagues, Kenneth Wärnmark has for a long time worked to find alternatives to the expensive metals. The researchers focused on iron which, with its six per cent prevalence in the Earth's crust, is significantly easier to source. The researchers have produced their own iron-based molecules whose potential for use in solar energy applications has been proven in previous studies.
+
+In this new study, the researchers have moved one step further and developed a new iron-based molecule with the ability to capture and utilise the energy of solar light for a sufficiently long time for it to react with another molecule. The new iron molecule also has the ability to glow long enough to enable researchers to see iron-based light with the naked eye at room temperature for the first time.
+
+"The good result depends on the fact that we have optimised the molecular structure around the iron atom," explains colleague Petter Persson of Lund University.
+
+The study is now published in the journal Science. According to the researchers, the iron molecule in question could be used in new types of photocatalysts for the production of solar fuel, either as hydrogen through water splitting or as methanol from carbon dioxide. Furthermore, the new findings open up other potential areas of application for iron molecules, e.g. as materials in light diodes (LEDs).
+
+What surprised the Lund researchers is that they arrived at good results so quickly. In just over five years, they succeeded in making iron interesting for photochemical applications, with properties largely as good as those of the best noble metals.
+
+"We believed it would take at least ten years," says Kenneth Wärnmark.
