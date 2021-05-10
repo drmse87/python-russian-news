@@ -67,6 +67,6 @@ def check_scraped_files():
         print(f'{number_of_bad_files} files may be bad (length < 300 chars) and may need to be copied manually: ', end='')
         print(*bad_files, sep=', ')
 
-# articles = read_csv_file()
-# do_scraping(articles)
+articles = read_csv_file()
+do_scraping(articles)
 check_scraped_files()
