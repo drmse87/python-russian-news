@@ -5,19 +5,16 @@ from DatasetParser import DatasetParser
 import sys
 
 class SentimentAnalyzer:
-    MULTINOMIAL_NAIVE_BAYES = 'MNB'
-    SUPPORT_VECTOR_MACHINES = 'SVM'
-
     def __init__(self, args):
         self.args = args
-        self.datasets = DatasetParser(self.args)
+        self.datasets = DatasetParser(args)
 
     def train(self):
         X = self.datasets.get_training_data()
         y = self.datasets.get_target_labels()
-        if self.args.algorithm == SentimentAnalyzer.MULTINOMIAL_NAIVE_BAYES:
+        if self.args.algorithm == 'MNB':
             self.clf = MultinomialNB()
-        elif self.args.algorithm == SentimentAnalyzer.SUPPORT_VECTOR_MACHINES:
+        elif self.args.algorithm == 'SVM':
             self.clf = svm.SVC(kernel='linear', verbose=True, C=0.1)
  
         self.clf.fit(X, y)

@@ -44,6 +44,11 @@ class Dataset:
             neutral_labels_and_filenames = [(Dataset.NEUTRAL_CLASS_LABEL, filePath) for filePath in os.listdir(f'{self.dataset_path}/neutral')]
             all_labels_and_filenames = all_labels_and_filenames + neutral_labels_and_filenames
 
+        # Sometimes training size should be reduced.
+        if self.dataset_path == self.args.training_set:
+            all_labels_and_filenames =  all_labels_and_filenames[:self.args.size]
+            print(len(all_labels_and_filenames))
+
         return all_labels_and_filenames
 
     def read_doc_contents(self, document):

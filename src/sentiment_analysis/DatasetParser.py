@@ -1,5 +1,6 @@
 from Dataset import Dataset
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import CountVectorizer
 from Lemmatizer import Lemmatizer
 
 class DatasetParser:
@@ -11,15 +12,17 @@ class DatasetParser:
         if args.include_neutral:
             self.target_names.append('Neutral')
 
-        # Pass training set name to tokenizer, to add dataset specific stop words.
-        # TODO!
-        self.tfidf_vectorizer = TfidfVectorizer(tokenizer=Lemmatizer())
+        # TODO! Pass training set name to tokenizer, to add dataset specific stop words.
+        if args.vectorizer == 'tf-idf':
+            self.vectorizer = TfidfVectorizer(tokenizer=Lemmatizer())
+        elif args.vectorizer == 'count':
+            self.vectorizer = CountVectorizer(tokenizer=Lemmatizer())
 
     def get_training_data(self):
-        return self.tfidf_vectorizer.fit_transform(self.training_set.get_docs())
+        return self.vectorizer.fit_transform(self.training_set.get_docs())
         
     def get_test_data(self):
-        return self.tfidf_vectorizer.transform(self.test_set.get_docs())
+        return self.vectorizer.transform(self.test_set.get_docs())
 
     def get_target_labels(self):
         return self.training_set.get_labels()
