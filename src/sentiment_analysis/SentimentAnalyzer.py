@@ -1,7 +1,7 @@
 from sklearn import svm
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import classification_report
-from TrainTestDatasetParser import TrainTestDatasetParser
+from DatasetParser import DatasetParser
 import sys
 
 class SentimentAnalyzer:
@@ -10,7 +10,7 @@ class SentimentAnalyzer:
 
     def __init__(self, args):
         self.args = args
-        self.datasets = TrainTestDatasetParser(args.training_set, args.test_set)
+        self.datasets = DatasetParser(args.training_set, args.test_set)
 
     def train(self):
         X = self.datasets.get_training_data()
