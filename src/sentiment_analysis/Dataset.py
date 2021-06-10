@@ -46,8 +46,7 @@ class Dataset:
 
         # Sometimes training size should be reduced.
         if self.dataset_path == self.args.training_set:
-            all_labels_and_filenames =  all_labels_and_filenames[:self.args.size]
-            print(len(all_labels_and_filenames))
+            all_labels_and_filenames =  all_labels_and_filenames[:self.args.training_set_size]
 
         return all_labels_and_filenames
 
