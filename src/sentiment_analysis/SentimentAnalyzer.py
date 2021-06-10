@@ -10,7 +10,7 @@ class SentimentAnalyzer:
 
     def __init__(self, args):
         self.args = args
-        self.datasets = DatasetParser(args.training_set, args.test_set)
+        self.datasets = DatasetParser(self.args)
 
     def train(self):
         X = self.datasets.get_training_data()
