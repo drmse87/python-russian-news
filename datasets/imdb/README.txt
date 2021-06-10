@@ -1,1 +1,0 @@
-Download the dataset https://ai.stanford.edu/~amaas/data/sentiment/, and then unzip it to this (imdb) directory 
