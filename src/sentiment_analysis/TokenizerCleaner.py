@@ -7,12 +7,16 @@ from sklearn.feature_extraction.text import strip_accents_unicode
 # string.punctuation: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
 
 class TokenizerCleaner:
-    def __init__(self, dataset_name):
+    def __init__(self, args):
+        self.args = args
         self.extended_stop_words = stopwords.words('english')
+        
         # Extend the stop words.
         self.extended_stop_words.append("n't")
         self.extended_stop_words.append("didn't")
-        if (dataset_name == 'imdb'):
+
+        # Add specific stop words for when training with movie reviews.
+        if ('imdb' in args.training_set):
             self.extended_stop_words.append('actor')
             self.extended_stop_words.append('actress')
             self.extended_stop_words.append('director')
@@ -27,6 +31,9 @@ class TokenizerCleaner:
                   .strip(string.punctuation)
 
     def tokenize_document(self, doc):
+        if not self.args.use_stopwords:
+            return [token for token in word_tokenize(doc)]
+        
         return [
             token for token in word_tokenize(doc) 
                 if token not in self.extended_stop_words

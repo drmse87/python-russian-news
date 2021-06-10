@@ -8,12 +8,12 @@ class DatasetParser:
         self.training_set = Dataset(args.training_set, args)
         self.test_set = Dataset(args.test_set, args)
 
-        # Prepare target names.
+        # Set target names.
         self.target_names = ['Positive', 'Negative']
         if args.include_neutral:
             self.target_names.append('Neutral')
 
-        # Prepare n-gram length.
+        # Set n-gram length.
         ngram_length = ()
         if args.ngram_length == 'unigram':
             ngram_length = (1, 1)
@@ -22,11 +22,11 @@ class DatasetParser:
         elif args.ngram_length == 'trigram':
             ngram_length = (3, 3)
 
-        # Prepare vectorizer (also set n-gram range).
+        # Set vectorizer.
         if args.vectorizer == 'tf-idf':
             self.vectorizer = TfidfVectorizer(tokenizer=Lemmatizer(args), ngram_range=ngram_length)
         elif args.vectorizer == 'count':
-            self.vectorizer = CountVectorizer(options)
+            self.vectorizer = CountVectorizer(tokenizer=Lemmatizer(args), ngram_range=ngram_length)
 
     def get_training_data(self):
         return self.vectorizer.fit_transform(self.training_set.get_docs())

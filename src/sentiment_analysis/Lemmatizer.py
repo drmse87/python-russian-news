@@ -7,9 +7,9 @@ from TokenizerCleaner import TokenizerCleaner
 # nltk.download('wordnet')
 
 class Lemmatizer:
-    def __init__(self, training_data = ''):
+    def __init__(self, args):
         self.wnl = WordNetLemmatizer()
-        self.tokenizerCleaner = TokenizerCleaner(training_data)
+        self.tokenizerCleaner = TokenizerCleaner(args)
 
     def get_wordnet_pos(self, treebank_tag):
         if treebank_tag.startswith('J'):
