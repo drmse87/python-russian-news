@@ -14,6 +14,10 @@ parser.add_argument('-sw', '--stopwords', dest='use_stopwords', default=True, he
 if __name__ == '__main__':
     args = parser.parse_args()
 
+    print('Starting sentiment analysis with: ', end='')
+    print(args)
     s = SentimentAnalyzer(args)
+    print('Starting training.')
     s.train()
+    print('Starting testing.')
     s.test()

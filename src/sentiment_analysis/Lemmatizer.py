@@ -8,8 +8,8 @@ from TokenizerCleaner import TokenizerCleaner
 
 class Lemmatizer:
     def __init__(self, args):
-        self.wnl = WordNetLemmatizer()
-        self.tokenizerCleaner = TokenizerCleaner(args)
+        self._wnl = WordNetLemmatizer()
+        self._tokenizerCleaner = TokenizerCleaner(args)
 
     def get_wordnet_pos(self, treebank_tag):
         if treebank_tag.startswith('J'):
@@ -28,10 +28,10 @@ class Lemmatizer:
         token_pos_tag = token_and_pos_tag[0][1]
         wordnet_pos = self.get_wordnet_pos(token_pos_tag)
 
-        return self.wnl.lemmatize(token, wordnet_pos)
+        return self._wnl.lemmatize(token, wordnet_pos)
 
     def __call__(self, doc):
-        cleaned_and_tokenized_document = self.tokenizerCleaner.clean_and_tokenize_document(doc)
+        cleaned_and_tokenized_document = self._tokenizerCleaner.clean_and_tokenize_document(doc)
 
         return [self.lemmatize_token(token) for token in cleaned_and_tokenized_document]
 

@@ -3,15 +3,15 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 from Lemmatizer import Lemmatizer
 
-class DatasetParser:
+class DatasetTransformer:
     def __init__(self, args):
-        self.training_set = Dataset(args.training_set, args)
-        self.test_set = Dataset(args.test_set, args)
+        self._training_set = Dataset(args.training_set, args)
+        self._test_set = Dataset(args.test_set, args)
 
         # Set target names.
-        self.target_names = ['Positive', 'Negative']
+        self._target_names = ['Positive', 'Negative']
         if args.include_neutral:
-            self.target_names.append('Neutral')
+            self._target_names.append('Neutral')
 
         # Set n-gram length.
         ngram_length = ()
@@ -28,17 +28,22 @@ class DatasetParser:
         elif args.vectorizer == 'count':
             self.vectorizer = CountVectorizer(tokenizer=Lemmatizer(args), ngram_range=ngram_length)
 
-    def get_training_data(self):
-        return self.vectorizer.fit_transform(self.training_set.get_docs())
+    @property
+    def target_names(self):
+        return self._target_names
+
+    @property
+    def target_labels(self):
+        return self._training_set.labels
+
+    @property
+    def true_labels(self):
+        return self._test_set.labels
+
+    def transform_training_set(self):
+        return self.vectorizer.fit_transform(self._training_set.documents)
         
-    def get_test_data(self):
-        return self.vectorizer.transform(self.test_set.get_docs())
+    def transform_test_set(self):
+        return self.vectorizer.transform(self._test_set.documents)
 
-    def get_target_labels(self):
-        return self.training_set.get_labels()
 
-    def get_true_labels(self):
-        return self.test_set.get_labels()
-
-    def get_target_names(self):
-        return self.target_names
