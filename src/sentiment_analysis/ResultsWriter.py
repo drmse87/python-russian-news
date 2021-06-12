@@ -16,7 +16,7 @@ class ResultsWriter:
         alg = self._args.algorithm
         size = self._args.training_set_size if self._args.training_set_size else 'full-size'
         ngram = self._args.ngram_length
-        neutral = 'inc-neutral' if self._args.include_neutral else 'no-neutral'
+        neutral = 'include-neutral' if self._args.include_neutral else 'no-neutral'
         stopwords = 'use-sw' if self._args.use_stopwords else 'no-sw'
         
         filename = f'./{ResultsWriter.OUTPUT_DIR}/{datetime.datetime.now():%Y-%m-%d_%H-%M-%S}_{train}_{test}_{alg}_{ngram}_{size}_{neutral}_{stopwords}.txt'
