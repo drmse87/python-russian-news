@@ -23,23 +23,23 @@ class DatasetReader:
         filenames_with_labels = self.read_filenames_and_labels()
 
         for fileNumber, file in enumerate(filenames_with_labels):
-            # Get file path depending on class.
-            document_label = file[DatasetReader.DOCUMENT_CLASS_INDEX]
+            # Get file path for class.
+            file_label = file[DatasetReader.DOCUMENT_CLASS_INDEX]
             label_pathname = ''
-            if (document_label == DatasetReader.POSITIVE_CLASS_LABEL):
+            if (file_label == DatasetReader.POSITIVE_CLASS_LABEL):
                 label_pathname = DatasetReader.POSITIVE_CLASS_PATHNAME
-            elif (document_label == DatasetReader.NEGATIVE_CLASS_LABEL):
+            elif (file_label == DatasetReader.NEGATIVE_CLASS_LABEL):
                 label_pathname = DatasetReader.NEGATIVE_CLASS_PATHNAME
-            elif (document_label == DatasetReader.NEUTRAL_CLASS_LABEL):
+            elif (file_label == DatasetReader.NEUTRAL_CLASS_LABEL):
                 label_pathname = DatasetReader.NEUTRAL_CLASS_PATHNAME
 
             # Read each file's contents.
-            document_filename = file[DatasetReader.DOCUMENT_CONTENT_INDEX]
-            document_contents = ''
-            with open(f'{self._dataset_path}/{label_pathname}/{document_filename}', 'r', encoding='utf-8') as document_contents_from_file:
-                document_contents = document_contents_from_file.read()
+            filename = file[DatasetReader.DOCUMENT_CONTENT_INDEX]
+            file_contents = ''
+            with open(f'{self._dataset_path}/{label_pathname}/{filename}', 'r', encoding='utf-8') as read_file_contents:
+                file_contents = read_file_contents.read()
 
-            documents.append(Document(document_label, document_contents))
+            documents.append(Document(file_label, file_contents))
 
             print(f'\r Reading {fileNumber}/{len(filenames_with_labels)} files in {self._dataset_path} {(fileNumber / len(filenames_with_labels)) * 100:.2f}%...', end='')
 
@@ -48,10 +48,7 @@ class DatasetReader:
 
     def read_filenames_and_labels(self):
         # Sometimes training size should be reduced.
-        if self._dataset_path == self._args.training_set:
-            print('hej')
-        if self._args.training_set_size:
-            print('yeah')      
+        # if self._args.training_set_size and self._dataset_path == self._args.training_set:
 
         pos_labels_and_filenames = [
             (DatasetReader.POSITIVE_CLASS_LABEL, filePath) 
