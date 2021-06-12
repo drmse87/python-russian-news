@@ -46,6 +46,8 @@ class DatasetReader:
             return DatasetReader.NEUTRAL_CLASS_PATHNAME
 
     def get_filenames_in_classpath(self, class_label, class_pathname):
+        if not os.path.isdir(f'{self._dataset_path}/{class_pathname}'):
+            raise FileNotFoundError(f'Error locating {class_pathname} in {self._dataset_path}.')
         filenames = [(class_label, filePath) for filePath in os.listdir(f'{self._dataset_path}/{class_pathname}')]
 
         # Sometimes training size should be reduced...
