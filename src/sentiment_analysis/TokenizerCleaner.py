@@ -1,5 +1,5 @@
 import string
-import regex
+import regex as re
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import strip_accents_unicode
@@ -13,7 +13,7 @@ class TokenizerCleaner:
         self._extended_stop_words = stopwords.words('english')
 
         # string.punctuation does not include these chars...
-        self._additional_unwanted_chars = ['“', '”', '–', '©', '’', '×']
+        self._additional_unwanted_chars = ['“', '”', '—', '–', '©', '’']
 
         # Extend the stop words.
         self._extended_stop_words.append("n't")
@@ -30,20 +30,23 @@ class TokenizerCleaner:
 
     def clean_document(self, doc):
         # Remove HTML.
-        TAG_RE = regex.compile(r'<[^>]+>')
-        mystr = TAG_RE.sub('', doc)
+        cleaned_doc = re.sub('<[^<]+?>', '', doc)
 
-        # Remove digits and punctuation.              
-        mystr = strip_accents_unicode(doc) \
-                  .translate(str.maketrans('', '', string.digits)) \
-                  .translate(str.maketrans('', '', string.punctuation))
+        # Remove Unicode chars.
+        cleaned_doc = cleaned_doc.encode('ascii', 'ignore')
+        cleaned_doc = cleaned_doc.decode()
+
+        # Remove digits and punctuation.
+        cleaned_doc = strip_accents_unicode(cleaned_doc) \
+                  .translate(str.maketrans(' ', ' ', string.digits)) \
+                  .translate(str.maketrans(' ', ' ', string.punctuation))
 
         # Remove additional unwanted chars.
         for unwanted_char in self._additional_unwanted_chars:
-            if unwanted_char in doc:
-                mystr = mystr.replace(unwanted_char, ' ') \
+            if unwanted_char in cleaned_doc:
+                cleaned_doc = cleaned_doc.replace(unwanted_char, ' ') \
 
-        return mystr
+        return cleaned_doc
 
     def tokenize_document(self, doc):
         if not self._args.use_stopwords:
