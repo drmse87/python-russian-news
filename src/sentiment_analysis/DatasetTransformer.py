@@ -24,9 +24,9 @@ class DatasetTransformer:
 
         # Set vectorizer.
         if args.vectorizer == 'tf-idf':
-            self.vectorizer = TfidfVectorizer(tokenizer=Lemmatizer(args), ngram_range=ngram_length)
+            self._vectorizer = TfidfVectorizer(tokenizer=Lemmatizer(args), ngram_range=ngram_length)
         elif args.vectorizer == 'count':
-            self.vectorizer = CountVectorizer(tokenizer=Lemmatizer(args), ngram_range=ngram_length)
+            self._vectorizer = CountVectorizer(tokenizer=Lemmatizer(args), ngram_range=ngram_length)
 
     @property
     def target_names(self):
@@ -40,10 +40,14 @@ class DatasetTransformer:
     def true_labels(self):
         return self._test_set.labels
 
+    @property
+    def vectorizer(self):
+        return self._vectorizer
+
     def transform_training_set(self):
-        return self.vectorizer.fit_transform(self._training_set.documents)
+        return self._vectorizer.fit_transform(self._training_set.documents)
         
     def transform_test_set(self):
-        return self.vectorizer.transform(self._test_set.documents)
+        return self._vectorizer.transform(self._test_set.documents)
 
 

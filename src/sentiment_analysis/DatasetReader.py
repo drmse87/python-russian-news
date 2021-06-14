@@ -55,7 +55,6 @@ class DatasetReader:
             number_of_classes = 2 if not self._args.include_neutral else 3
         
             filenames = filenames[:self._args.training_set_size // number_of_classes]
-            print(filenames)
 
         return filenames
 
