@@ -8,7 +8,7 @@ ARTICLE_ID_INDEX = 0
 CLASS_INDEX = 3
 URL_INDEX = 4
 CSV_FILENAME = 'articles.csv'
-DIR_NAME = 'scraped'
+DIR_NAME = 'extracted'
 
 unwanted_classes_rt = ['article__share', 'article__share_bottom', 'article__short-url', 'article__google-news', 
     'article__tags-trends', 'langs__item', 'article__date', 'read-more', 'read-more-big__container', 
@@ -38,7 +38,7 @@ def write_to_txt_file(filename, content):
     txt_file.write(content)
     txt_file.close() 
 
-def scrape_article(url, unwanted_classes, article_text_content_classes):
+def extract_article(url, unwanted_classes, article_text_content_classes):
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
 
@@ -70,9 +70,9 @@ def decompose_unwanted_links(soup):
     for e in read_more_links + like_this_story_links + urls:
         e.parent.decompose()
 
-def do_scraping(articles):
-    if not os.path.exists('scraped'):
-        os.makedirs('scraped')
+def do_extract(articles):
+    if not os.path.exists(DIR_NAME):
+        os.makedirs(DIR_NAME)
 
     for article in articles:
         article_id = article[ARTICLE_ID_INDEX]
@@ -82,13 +82,13 @@ def do_scraping(articles):
         output_content = ''
 
         if 'sputnik' in article_id:
-            output_content = scrape_article(article_url, unwanted_classes_sputnik, article_text_content_classes_sputnik)
+            output_content = extract_article(article_url, unwanted_classes_sputnik, article_text_content_classes_sputnik)
         elif 'rt' in article_id:
-            output_content = scrape_article(article_url, unwanted_classes_rt, article_text_content_classes_rt)
+            output_content = extract_article(article_url, unwanted_classes_rt, article_text_content_classes_rt)
 
         write_to_txt_file(output_filename, output_content)
 
-def check_scraped_files():
+def check_extracted_files():
     all_files = os.listdir(DIR_NAME)
     bad_files = []
 
@@ -106,6 +106,7 @@ def check_scraped_files():
         print(f'{number_of_bad_files} files may be bad (length < 300 chars) and may need to be copied manually: ', end='')
         print(*bad_files, sep=', ')
 
-articles = read_csv_file()
-do_scraping(articles)
-check_scraped_files()
+if __name__ == '__main__':
+    articles = read_csv_file()
+    do_extract(articles)
+    check_extracted_files()

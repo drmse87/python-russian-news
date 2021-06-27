@@ -7,7 +7,7 @@ class ResultsWriter:
     def __init__(self, args):
         self._args = args
 
-    def write_result(self, results, number_of_features, most_informative_features):
+    def write_result(self, results, number_of_features):
         if not os.path.exists(ResultsWriter.OUTPUT_DIR):
             os.makedirs(ResultsWriter.OUTPUT_DIR)
 
@@ -28,10 +28,11 @@ class ResultsWriter:
         txt_file.write('=================================\n')
         txt_file.write(results)
         txt_file.write('=================================\n')
-        for current_class in most_informative_features:
-            class_label = current_class[0]
-            features = current_class[1]
-            for coef, feat in features:
-                txt_file.write(f'{class_label} {feat} {coef}\n')
-            txt_file.write('=================================\n')
+        # if not self._args.training_set_size:
+        #     for current_class in most_informative_features:
+        #         class_label = current_class[0]
+        #         features = current_class[1]
+        #         for coef, feat in features:
+        #             txt_file.write(f'{class_label} {feat} {coef}\n')
+        #         txt_file.write('=================================\n')
         txt_file.close() 

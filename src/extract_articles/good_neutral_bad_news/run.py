@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 URL_INDEX = 0
 CLASS_INDEX = 1
 CSV_FILENAME = 'articles.csv'
-DIR_NAME = 'scraped'
+DIR_NAME = 'extracted'
 
 def read_csv_file():
     content = []
@@ -25,7 +25,7 @@ def write_to_txt_file(filename, content):
     txt_file.write(content)
     txt_file.close() 
 
-def scrape_article(url):
+def extract_article(url):
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
     extracted_article_text_content = ''
@@ -36,7 +36,7 @@ def scrape_article(url):
 
     return extracted_article_text_content
 
-def do_scraping(articles):
+def do_extract(articles):
     if not os.path.exists(DIR_NAME):
         os.makedirs(DIR_NAME)
 
@@ -45,11 +45,11 @@ def do_scraping(articles):
         article_url = article[URL_INDEX]
 
         output_filename = f"./{DIR_NAME}/{article_class}_{str(index)}.txt"
-        output_content = scrape_article(article_url)
+        output_content = extract_article(article_url)
 
         write_to_txt_file(output_filename, output_content)
 
-def check_scraped_files():
+def check_extracted_files():
     all_files = os.listdir(DIR_NAME)
     bad_files = []
 
@@ -67,6 +67,7 @@ def check_scraped_files():
         print(f'{number_of_bad_files} files may be bad (length < 300 chars) and may need to be copied manually: ', end='')
         print(*bad_files, sep=', ')
 
-articles = read_csv_file()
-do_scraping(articles)
-check_scraped_files()
+if __name__ == '__main__':
+    articles = read_csv_file()
+    do_extract(articles)
+    check_extracted_files()

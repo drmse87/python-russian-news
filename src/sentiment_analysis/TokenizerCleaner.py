@@ -30,7 +30,7 @@ class TokenizerCleaner:
 
     def clean_document(self, doc):
         # Remove HTML.
-        cleaned_doc = re.sub('<[^<]+?>', '', doc)
+        cleaned_doc = re.sub('<[^<]+?>', ' ', doc)
 
         # Remove Unicode chars.
         cleaned_doc = cleaned_doc.encode('ascii', 'ignore')
