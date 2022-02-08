@@ -2,11 +2,11 @@
 
 ## Article Extraction
 
-In the first part of this project, some 395 English language and foreign-facing Russian-language news articles will be extracted with the powerful _requests_ and _BeautifulSoup_ libraries.
+In the first part of this project, some 395 English language and foreign-facing Russian-language news articles were extracted with the powerful _requests_ and _BeautifulSoup_ libraries.
 
 ## Sentiment Analyzer
 
-In the second part of the project, a sentiment analysis will be performed on the extracted articles and movie reviews from the Large Movie Review Dataset (https://ai.stanford.edu/~amaas/data/sentiment/) with _sklearn_.
+In the second part of the project, a sentiment analysis was performed on the extracted articles and movie reviews from the Large Movie Review Dataset (https://ai.stanford.edu/~amaas/data/sentiment/) with _sklearn_. The datasets were organized as follows:
 
 ### Training set
 
@@ -18,14 +18,14 @@ In the second part of the project, a sentiment analysis will be performed on the
 -   Large Movie Review Dataset (25,000 articles earmarked for testing)
 -   RT and Sputnik articles (95 articles)
 
-### Running the Sentiment Analysis
+### Running the Sentiment Analyzer
 
-Run the command: `python sentiment_analysis` in the src directory with the following flags:
+Run the command: `python sentiment_analysis` in the src directory with one the following flags:
 
 -   training_set (Training set directory)
 -   test_set (Test set directory)
--   -a (Algorithm, valid options are 'MNB' and 'SVM', default: MNB)
--   -v (Vectorizer, feature 'count', or fractional 'tf-idf' count, default TF-IDF).
--   -s (Training set size).
--   -ng (N-gram length, valid options are 'unigram', 'bigram' and 'trigram', default: unigram)
--   -sw (Use stopwords?, default: True)
+-   -a/--algorithm (Algorithm, valid options are 'MNB' and 'SVM', default: MNB)
+-   -v/--vectorizer (Vectorizer, feature 'count', or fractional 'tf-idf' count, default TF-IDF).
+-   -s/--size (Training set size).
+-   -ng/--ngram (N-gram length, valid options are 'unigram', 'bigram' and 'trigram', default: unigram)
+-   -sw/--stopwords or --no-stopwords (Use stopwords, default: True)
