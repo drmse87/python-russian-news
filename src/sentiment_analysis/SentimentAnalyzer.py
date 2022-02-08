@@ -1,8 +1,8 @@
 from sklearn import svm
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import classification_report
-from DatasetTransformer import DatasetTransformer
-from ResultsWriter import ResultsWriter
+from dataset import DatasetTransformer
+from dataset.file_handling import ResultsWriter
 
 class SentimentAnalyzer:
     def __init__(self, args):

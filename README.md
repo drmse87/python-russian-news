@@ -6,7 +6,7 @@ In the first part of this project, some 395 English language and foreign-facing 
 
 ## Sentiment Analyzer
 
-In the second part of the project, a sentiment analysis will be performed on the extracted articles and movie reviews from the Large Movie Review Dataset (https://ai.stanford.edu/~amaas/data/sentiment/) as follows:
+In the second part of the project, a sentiment analysis will be performed on the extracted articles and movie reviews from the Large Movie Review Dataset (https://ai.stanford.edu/~amaas/data/sentiment/) with _sklearn_.
 
 ### Training set
 
