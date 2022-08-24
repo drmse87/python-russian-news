@@ -14,7 +14,7 @@ class Dataset:
         if not dataset_dir_contents:
             raise FileNotFoundError(f'No labels (folders) found in {dataset_path}.')
         else:
-            self._availableLabels = dataset_dir_contents
+            self._labels = dataset_dir_contents
 
         self._documents = self.read_dataset()
 
@@ -27,15 +27,15 @@ class Dataset:
         return [document.contents for document in self._documents]
 
     @property
-    def labels(self):
+    def document_labels(self):
         return [document.label for document in self._documents]
 
     @property
-    def availableLabels(self):
-        return self._availableLabels
+    def labels(self):
+        return self._labels
 
     def read_dataset(self):
-        fileNames_with_labels = [(label, filePath) for label in self._availableLabels for filePath in os.listdir(f'{self._dataset_path}/{label}')]
+        fileNames_with_labels = [(label, filePath) for label in self._labels for filePath in os.listdir(f'{self._dataset_path}/{label}')]
         documents = []
   
         for fileNumber, file in enumerate(fileNames_with_labels):
@@ -71,11 +71,11 @@ class DatasetTransformer:
         self._training_set = Dataset(args.training_set, args)
         self._test_set = Dataset(args.test_set, args)
 
-        if len(self._training_set.availableLabels) != len(self._test_set.availableLabels):
+        if len(self._training_set.labels) != len(self._test_set.labels):
             raise ValueError("Labels/classes mismatch in training and test set.")
 
         # Set target names.
-        self._target_names = self._training_set.availableLabels
+        self._target_names = self._training_set.labels
 
         # Set n-gram length.
         ngram_length = ()
@@ -98,11 +98,11 @@ class DatasetTransformer:
 
     @property
     def target_labels(self):
-        return self._training_set.labels
+        return self._training_set.document_labels
 
     @property
     def true_labels(self):
-        return self._test_set.labels
+        return self._test_set.document_labels
 
     @property
     def vectorizer(self):
