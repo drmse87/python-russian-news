@@ -26,7 +26,7 @@ The Sentiment Analyzer can be run with the command: `python .src/sentiment_analy
 * -ng/--ngram (N-gram length, valid options are 'unigram', 'bigram' and 'trigram', default: unigram)
 * -sw/--stopwords or --no-stopwords (Use stopwords, default: True)
 
-The script then checks the training and test set directories for appropriate labels (subdirectories) and documents (any .txt files inside them). Note that test and training set directories should be organised as follows (else the script should raise an error):
+The script checks the provided training and test set paths for appropriate labels (subdirectories) and documents (any .txt files inside them). Note that test and training set directories should be organized as follows (else the script should raise an error):
 * Training set
     * Label 1
         * File 1.txt
