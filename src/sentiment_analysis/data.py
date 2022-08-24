@@ -4,17 +4,17 @@ from sklearn.feature_extraction.text import CountVectorizer
 from preprocessing import Lemmatizer
 
 class Dataset:
-    def __init__(self, dataset_path, args):
+    def __init__(self, dataset_path):
         self._dataset_path = dataset_path
 
         if not os.path.isdir(dataset_path):
             raise FileNotFoundError(f'Error locating {dataset_path}.')
 
-        dataset_dir_contents = [f.name for f in os.scandir(dataset_path) if f.is_dir()]
-        if not dataset_dir_contents:
-            raise FileNotFoundError(f'No labels (subfolders) found in {dataset_path}.')
+        dataset_dir_subdirs = [f.name for f in os.scandir(dataset_path) if f.is_dir()]
+        if not dataset_dir_subdirs:
+            raise FileNotFoundError(f'No labels (subdirectories) were found in {dataset_path}.')
 
-        self._labels = dataset_dir_contents
+        self._labels = dataset_dir_subdirs
         self._documents = self.read_dataset()
 
     @property
@@ -70,8 +70,8 @@ class Document:
 
 class DatasetTransformer:
     def __init__(self, args):
-        self._training_set = Dataset(args.training_set, args)
-        self._test_set = Dataset(args.test_set, args)
+        self._training_set = Dataset(args.training_set)
+        self._test_set = Dataset(args.test_set)
 
         if sorted(self._training_set.labels) != sorted(self._test_set.labels):
             raise ValueError("Labels/classes mismatch in training and test set.")
