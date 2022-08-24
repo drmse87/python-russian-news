@@ -20,12 +20,11 @@ In the second part of the project, a sentiment analysis was performed on the ext
 
 ### Running the Sentiment Analyzer
 
-Run the command: `python sentiment_analysis` in the src directory with one the following flags:
+Run the command: `python .src/sentiment_analysis {training_set_dir} {test_set_dir}` with any of the optional flags:
 
--   training_set (Training set directory)
--   test_set (Test set directory)
 -   -a/--algorithm (Algorithm, valid options are 'MNB' and 'SVM', default: MNB)
 -   -v/--vectorizer (Vectorizer, feature 'count', or fractional 'tf-idf' count, default TF-IDF).
--   -s/--size (Training set size).
 -   -ng/--ngram (N-gram length, valid options are 'unigram', 'bigram' and 'trigram', default: unigram)
 -   -sw/--stopwords or --no-stopwords (Use stopwords, default: True)
+
+It will then start checking the provided directories for appropriate labels (subdirectories) and documents (.txt files), and finally present the result in a classification report.
