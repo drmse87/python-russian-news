@@ -1,7 +1,7 @@
-from dataset.models import Dataset
+from dataset.models.Dataset import Dataset
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
-from preprocessing import Lemmatizer
+from preprocessing.Lemmatizer import Lemmatizer
 
 class DatasetTransformer:
     def __init__(self, args):

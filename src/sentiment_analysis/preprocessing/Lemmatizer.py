@@ -1,7 +1,7 @@
 from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag
 from nltk.corpus import wordnet
-from TokenizerCleaner import TokenizerCleaner
+from preprocessing.TokenizerCleaner import TokenizerCleaner
 
 # nltk.download('averaged_perceptron_tagger')
 # nltk.download('wordnet')

@@ -1,5 +1,5 @@
 import os
-from Document import Document
+from ..models.Document import Document
 
 class DatasetReader:
     POSITIVE_CLASS_LABEL = 1

@@ -1,4 +1,4 @@
-from DatasetReader import DatasetReader
+from ..file_handling.DatasetReader import DatasetReader
 
 class Dataset:
     def __init__(self, dataset_path, args):
