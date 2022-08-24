@@ -1,10 +1,8 @@
 import string
 import regex as re
+from nltk import pos_tag, word_tokenize
 from nltk.stem import WordNetLemmatizer
-from nltk import pos_tag
-from nltk.corpus import wordnet
-from nltk import word_tokenize
-from nltk.corpus import stopwords
+from nltk.corpus import wordnet, stopwords
 from sklearn.feature_extraction.text import strip_accents_unicode
 
 # nltk.download('stopwords')
@@ -53,15 +51,6 @@ class TokenizerCleaner:
         # Extend the stop words.
         self._extended_stop_words.append("n't")
         self._extended_stop_words.append("didn't")
-
-        # Add specific stop words for when training with movie reviews.
-        if ('imdb' in args.training_set):
-            self._extended_stop_words.append('actor')
-            self._extended_stop_words.append('actress')
-            self._extended_stop_words.append('director')
-            self._extended_stop_words.append('scene')
-            self._extended_stop_words.append('movie')
-            self._extended_stop_words.append('film')
 
     def clean_document(self, doc):
         # Remove HTML.
