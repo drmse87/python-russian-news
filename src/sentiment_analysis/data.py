@@ -35,11 +35,11 @@ class Dataset:
 
     def read_dataset(self):
         fileNames_with_labels = [(label, filePath) for label in self._labels for filePath in os.listdir(f'{self._dataset_path}/{label}') if filePath.endswith('.txt')]
-        documents = []
 
         if not fileNames_with_labels:
             raise FileNotFoundError('Found no documents to analyze (.txt files).')
-  
+
+        documents = []
         for fileNumber, file in enumerate(fileNames_with_labels):
             file_label = file[0]
             filename = file[1]
