@@ -9,13 +9,12 @@ class Dataset:
 
         if not os.path.isdir(dataset_path):
             raise FileNotFoundError(f'Error locating {dataset_path}.')
-        
-        dataset_dir_contents = os.listdir(dataset_path)
-        if not dataset_dir_contents:
-            raise FileNotFoundError(f'No labels (folders) found in {dataset_path}.')
-        else:
-            self._labels = dataset_dir_contents
 
+        dataset_dir_contents = [f.name for f in os.scandir(dataset_path) if f.is_dir()]
+        if not dataset_dir_contents:
+            raise FileNotFoundError(f'No labels (subfolders) found in {dataset_path}.')
+
+        self._labels = dataset_dir_contents
         self._documents = self.read_dataset()
 
     @property
@@ -35,8 +34,11 @@ class Dataset:
         return self._labels
 
     def read_dataset(self):
-        fileNames_with_labels = [(label, filePath) for label in self._labels for filePath in os.listdir(f'{self._dataset_path}/{label}')]
+        fileNames_with_labels = [(label, filePath) for label in self._labels for filePath in os.listdir(f'{self._dataset_path}/{label}') if filePath.endswith('.txt')]
         documents = []
+
+        if not fileNames_with_labels:
+            raise FileNotFoundError('Found no documents to analyze (.txt files).')
   
         for fileNumber, file in enumerate(fileNames_with_labels):
             file_label = file[0]
