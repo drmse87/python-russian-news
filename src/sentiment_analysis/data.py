@@ -71,7 +71,7 @@ class DatasetTransformer:
         self._training_set = Dataset(args.training_set, args)
         self._test_set = Dataset(args.test_set, args)
 
-        if len(self._training_set.labels) != len(self._test_set.labels):
+        if sorted(self._training_set.labels) != sorted(self._test_set.labels):
             raise ValueError("Labels/classes mismatch in training and test set.")
 
         # Set target names.
