@@ -11,18 +11,18 @@ import numpy as np
 
 # Crossvalidate both training sets.
 for current_training_set in [
-    Dataset('imdb', 'train'), 
-    Dataset('good_bad_neutral_news', 'train')
+    Dataset('./datasets/imdb/train'), 
+    Dataset('./datasets/good_bad_neutral_news')
     ]:
     for current_vectorizer in [ # ngram_range=(1, 1) for unigram or (2, 2) for bigram.
         CountVectorizer(tokenizer=Lemmatizer(current_training_set)), 
         TfidfVectorizer(tokenizer=Lemmatizer(current_training_set))
         ]:
-        current_stage = f'{current_training_set.dataset_name}, {current_vectorizer.__class__.__name__}'
+        current_stage = f'{current_training_set.dataset_path}, {current_vectorizer.__class__.__name__}'
 
         # Use 10-fold cross validation (MNB).
-        X = current_vectorizer.fit_transform(current_training_set.get_features())
-        y = current_training_set.get_labels()
+        X = current_vectorizer.fit_transform(current_training_set.documents)
+        y = current_training_set.document_labels
         accuracy = cross_val_score(MultinomialNB(), X, y, cv=KFold(n_splits=10, shuffle=True))
         avg_accuracy = np.mean(accuracy)
         print(f'Accuracy for each fold ({current_stage}): {accuracy}')
