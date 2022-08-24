@@ -5,8 +5,8 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.svm import SVC
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
-from Lemmatizer import Lemmatizer
-from Dataset import Dataset
+from preprocessing import Lemmatizer
+from data import Dataset
 import numpy as np
 
 # Crossvalidate both training sets.

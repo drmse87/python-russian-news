@@ -1,5 +1,37 @@
 import os
-from ..models.Document import Document
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import CountVectorizer
+from preprocessing import Lemmatizer
+
+class Dataset:
+    def __init__(self, dataset_path, args):
+        self._dataset_path = dataset_path
+        self._documents = DatasetReader(dataset_path, args).read_dataset()
+
+    @property
+    def dataset_path(self):
+        return self._dataset_path
+
+    @property
+    def documents(self):
+        return [document.contents for document in self._documents]
+
+    @property
+    def labels(self):
+        return [document.label for document in self._documents]
+
+class Document:
+    def __init__(self, label, contents):
+        self._label = label
+        self._contents = contents
+
+    @property
+    def label(self):
+        return self._label
+
+    @property
+    def contents(self):
+        return self._contents
 
 class DatasetReader:
     POSITIVE_CLASS_LABEL = 1
@@ -68,3 +100,50 @@ class DatasetReader:
             all_labels_and_filenames = all_labels_and_filenames + neutral_labels_and_filenames
 
         return all_labels_and_filenames     
+
+class DatasetTransformer:
+    def __init__(self, args):
+        self._training_set = Dataset(args.training_set, args)
+        self._test_set = Dataset(args.test_set, args)
+
+        # Set target names.
+        self._target_names = ['Positive', 'Negative']
+        if args.include_neutral:
+            self._target_names.append('Neutral')
+
+        # Set n-gram length.
+        ngram_length = ()
+        if args.ngram_length == 'unigram':
+            ngram_length = (1, 1)
+        elif args.ngram_length == 'bigram':
+            ngram_length = (2, 2)
+        elif args.ngram_length == 'trigram':
+            ngram_length = (3, 3)
+
+        # Set vectorizer.
+        if args.vectorizer == 'tf-idf':
+            self._vectorizer = TfidfVectorizer(tokenizer=Lemmatizer(args), ngram_range=ngram_length)
+        elif args.vectorizer == 'count':
+            self._vectorizer = CountVectorizer(tokenizer=Lemmatizer(args), ngram_range=ngram_length)
+
+    @property
+    def target_names(self):
+        return self._target_names
+
+    @property
+    def target_labels(self):
+        return self._training_set.labels
+
+    @property
+    def true_labels(self):
+        return self._test_set.labels
+
+    @property
+    def vectorizer(self):
+        return self._vectorizer
+
+    def transform_training_set(self):
+        return self._vectorizer.fit_transform(self._training_set.documents)
+        
+    def transform_test_set(self):
+        return self._vectorizer.transform(self._test_set.documents)
