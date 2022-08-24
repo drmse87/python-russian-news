@@ -6,8 +6,6 @@ from nltk.corpus import wordnet, stopwords
 from sklearn.feature_extraction.text import strip_accents_unicode
 
 # nltk.download('stopwords')
-# string.punctuation: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
-
 # nltk.download('averaged_perceptron_tagger')
 # nltk.download('wordnet')
 
@@ -45,7 +43,7 @@ class TokenizerCleaner:
         self._args = args
         self._extended_stop_words = stopwords.words('english')
 
-        # string.punctuation does not include these chars...
+        # string.punctuation: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ (does not include these chars)
         self._additional_unwanted_chars = ['“', '”', '—', '–', '©', '’']
 
         # Extend the stop words.
